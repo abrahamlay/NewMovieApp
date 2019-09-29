@@ -33,7 +33,8 @@ ext {
 
     libs = [
             retrofit          : ["com.squareup.retrofit2:retrofit:$retrofit2Version",
-                                 "com.squareup.retrofit2:adapter-rxjava2:$retrofit2Version"],
+                                 "com.squareup.retrofit2:adapter-rxjava2:$retrofit2Version",
+                                 "com.squareup.retrofit2:converter-gson:$retrofit2Version"],
             rxjava            : ["io.reactivex.rxjava2:rxjava:$rxJavaVersion",
                                  "io.reactivex.rxjava2:rxandroid:$rxAndroid"],
             dagger            : "com.google.dagger:dagger:$daggerVersion",

@@ -5,10 +5,6 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 
-def cprops = new Properties()
-cprops.load(new FileInputStream(file('config.properties')))
-def config = new ConfigSlurper().parse(cprops)
-
 android {
     compileSdkVersion androidCompileSdkVersion
     buildToolsVersion androidBuildToolsVersion
@@ -40,17 +36,14 @@ android {
         development {
             dimension "env"
             applicationId "com.abrahamlay.newmovieapp.dev"
-            buildConfigField("String", "API_BASE_URL", config.env.dev.baseurl)
         }
         staging{
             dimension "env"
             applicationId "com.abrahamlay.newmovieapp.dev"
-            buildConfigField("String", "API_BASE_URL", config.env.staging.baseurl)
         }
         production{
             dimension "env"
             applicationId 'com.abrahamlay.newmovieapp'
-            buildConfigField("String", "API_BASE_URL", config.env.prod.baseurl)
         }
     }
 }

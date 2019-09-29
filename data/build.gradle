@@ -1,6 +1,11 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+
+def cprops = new Properties()
+cprops.load(new FileInputStream(file('config.properties')))
+def config = new ConfigSlurper().parse(cprops)
+
 android {
     compileSdkVersion androidCompileSdkVersion
     buildToolsVersion androidBuildToolsVersion
@@ -12,11 +17,29 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    flavorDimensions "env"
+    productFlavors{
+        development {
+            dimension "env"
+            buildConfigField("String", "API_BASE_URL", config.env.dev.baseurl)
+        }
+        staging{
+            dimension "env"
+            buildConfigField("String", "API_BASE_URL", config.env.staging.baseurl)
+        }
+        production{
+            dimension "env"
+            buildConfigField("String", "API_BASE_URL", config.env.prod.baseurl)
+        }
+    }
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation kotlinStdLib
+
+    implementation project(':domain')
 
     //appcompat
     implementation support.appcompat
@@ -28,6 +51,8 @@ dependencies {
 
     //rxjava
     implementation libs.rxjava
+
+    implementation libs.dagger
 
 
 
