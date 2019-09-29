@@ -4,6 +4,11 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+
+def cprops = new Properties()
+cprops.load(new FileInputStream(file('config.properties')))
+def config = new ConfigSlurper().parse(cprops)
+
 android {
     compileSdkVersion androidCompileSdkVersion
     buildToolsVersion androidBuildToolsVersion
@@ -17,11 +22,35 @@ android {
     }
     buildTypes {
         debug{
-
+            debuggable true
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         release {
-            minifyEnabled false
+            debuggable false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    flavorDimensions "env"
+    productFlavors{
+        development {
+            dimension "env"
+            applicationId "com.abrahamlay.newmovieapp.dev"
+            buildConfigField("String", "API_BASE_URL", config.env.dev.baseurl)
+        }
+        staging{
+            dimension "env"
+            applicationId "com.abrahamlay.newmovieapp.dev"
+            buildConfigField("String", "API_BASE_URL", config.env.staging.baseurl)
+        }
+        production{
+            dimension "env"
+            applicationId 'com.abrahamlay.newmovieapp'
+            buildConfigField("String", "API_BASE_URL", config.env.prod.baseurl)
         }
     }
 }
