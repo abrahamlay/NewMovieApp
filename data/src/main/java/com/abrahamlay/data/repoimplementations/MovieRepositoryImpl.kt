@@ -4,16 +4,13 @@ import com.abrahamlay.data.apis.MovieAPI
 import com.abrahamlay.domain.entities.MovieModel
 import com.abrahamlay.domain.repositories.MovieRepository
 import io.reactivex.Flowable
-import javax.inject.Inject
-import javax.inject.Singleton
 
 /**
  * Created by Abraham Lay on 2019-09-29.
  */
 
 
-@Singleton
-class MovieRepositoryImpl @Inject constructor(val api: MovieAPI) : MovieRepository {
+class MovieRepositoryImpl constructor(private val api: MovieAPI) : MovieRepository {
     override fun getPopularMovies(apiKey: String): Flowable<List<MovieModel>> =
         api.getPopularMovies(apiKey).map {
             it.results.map { movie ->

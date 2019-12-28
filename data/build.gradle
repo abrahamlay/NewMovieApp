@@ -52,8 +52,6 @@ dependencies {
     //rxjava
     implementation libs.rxjava
 
-    implementation libs.dagger
-
 
 
     testImplementation test.jUnit
