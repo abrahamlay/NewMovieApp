@@ -8,7 +8,7 @@ import com.abrahamlay.domain.entities.MovieModel
 import com.abrahamlay.newmovieapp.feature.MovieAdapter
 import com.abrahamlay.newmovieapp.feature.MovieFragment
 import com.abrahamlay.newmovieapp.feature.ViewContract
-import kotlinx.android.synthetic.main.movie_fragment.*
+import kotlinx.android.synthetic.main.movie_fragment.rvList
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -18,6 +18,10 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class TopRatedMovieFragment : MovieFragment<TopRatedMovieViewModel>(),
     ViewContract,
     MovieAdapter.OnClickListener {
+    override fun onRefresh() {
+        showLoading()
+        viewModel.refreshMovie()
+    }
 
 
     override val viewModel by viewModel<TopRatedMovieViewModel>()
@@ -37,6 +41,7 @@ class TopRatedMovieFragment : MovieFragment<TopRatedMovieViewModel>(),
     }
 
     override fun onMovieLoaded(list: List<MovieModel>) {
+        hideLoading()
         (adapter as? MovieAdapter)?.data = list
         rvList.adapter = adapter
         rvList.layoutManager = getLayoutManager()
@@ -44,5 +49,6 @@ class TopRatedMovieFragment : MovieFragment<TopRatedMovieViewModel>(),
 
     override fun onItemClicked(data: Any) {
         Toast.makeText(context, (data as MovieModel).title, Toast.LENGTH_SHORT).show()
+        //TODO add detail movie page with android navigation
     }
 }

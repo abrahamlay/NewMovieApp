@@ -1,4 +1,4 @@
-package com.abrahamlay.newmovieapp.base
+package com.abrahamlay.newmovieapp.feature
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.abrahamlay.base.presentation.BaseFragment
+import com.abrahamlay.base.subscriber.BaseViewModel
 import com.abrahamlay.newmovieapp.R
 import kotlinx.android.synthetic.main.movie_fragment.*
 
@@ -27,11 +29,6 @@ abstract class BaseListFragment<DATA, VM : BaseViewModel> : BaseFragment<VM>(),
         savedInstanceState: Bundle?
     ): View? = inflater.inflate(R.layout.movie_fragment, container, false)
 
-
-    override fun onRefresh() {
-        // TODO
-    }
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         refresh.setOnRefreshListener(this)
@@ -52,5 +49,13 @@ abstract class BaseListFragment<DATA, VM : BaseViewModel> : BaseFragment<VM>(),
             }
             refresh.let { refresh.isRefreshing = active }
         }
+    }
+
+    fun showLoading() {
+        refresh.isRefreshing = true
+    }
+
+    fun hideLoading() {
+        refresh.isRefreshing = false
     }
 }

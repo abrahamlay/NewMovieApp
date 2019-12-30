@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
 import com.abrahamlay.newmovieapp.R
-import com.abrahamlay.newmovieapp.base.BaseFragment
-import com.abrahamlay.newmovieapp.base.BaseViewModel
+import com.abrahamlay.base.presentation.BaseFragment
+import com.abrahamlay.base.subscriber.BaseViewModel
 import com.google.android.material.tabs.TabLayout
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

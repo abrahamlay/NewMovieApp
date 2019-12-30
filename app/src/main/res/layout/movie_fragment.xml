@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.abrahamlay.newmovieapp.base.BaseViewModel" />
+            type="com.abrahamlay.base.subscriber.BaseViewModel" />
     </data>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout

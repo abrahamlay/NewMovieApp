@@ -1,24 +1,24 @@
-package com.abrahamlay.newmovieapp.util
+package com.abrahamlay.base.util
 
 import android.annotation.SuppressLint
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 
-class DateFormater {
+open class DateFormater {
     companion object {
         @JvmStatic
         @SuppressLint("SimpleDateFormat")
         fun changeDateFormat(
-            dateFormatInput: String,
-            dateInput: String?,
-            dateFormatOutput: String
+            dateInput: String?
         ): String {
 
             try {
                 dateInput.let {
-                    val inputFormat = SimpleDateFormat(dateFormatInput)
-                    val outputFormat = SimpleDateFormat(dateFormatOutput, Locale.ENGLISH)
+                    val inputFormat = SimpleDateFormat("yyyy-MM-dd")
+                    val outputFormat = SimpleDateFormat(
+                        "EEEE,  MMM dd, yyyy", Locale.ENGLISH
+                    )
                     val date: Date
                     date = inputFormat.parse(dateInput!!)!!
 

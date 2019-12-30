@@ -16,6 +16,10 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class PopularMovieFragment : MovieFragment<PopularMovieViewModel>(),
     ViewContract,
     MovieAdapter.OnClickListener {
+    override fun onRefresh() {
+        showLoading()
+        viewModel.refreshMovie()
+    }
 
 
     override val viewModel by viewModel<PopularMovieViewModel>()
@@ -30,6 +34,7 @@ class PopularMovieFragment : MovieFragment<PopularMovieViewModel>(),
     }
 
     override fun onMovieLoaded(list: List<MovieModel>) {
+        hideLoading()
         (adapter as? MovieAdapter)?.data = list
         rvList.adapter = adapter
         rvList.layoutManager = getLayoutManager()
@@ -37,5 +42,6 @@ class PopularMovieFragment : MovieFragment<PopularMovieViewModel>(),
 
     override fun onItemClicked(data: Any) {
         Toast.makeText(context, (data as MovieModel).title, Toast.LENGTH_SHORT).show()
+        //TODO add detail movie page with android navigation
     }
 }

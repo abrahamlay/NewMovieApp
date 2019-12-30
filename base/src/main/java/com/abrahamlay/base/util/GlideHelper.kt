@@ -1,9 +1,8 @@
-package com.abrahamlay.newmovieapp.util
+package com.abrahamlay.base.util
 
 import android.content.Context
 import android.widget.ImageView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.Priority
 import com.bumptech.glide.request.RequestOptions
 
 

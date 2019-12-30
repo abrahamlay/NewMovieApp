@@ -6,9 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.abrahamlay.base.subscriber.BaseViewModel
 import com.abrahamlay.domain.entities.MovieModel
-import com.abrahamlay.newmovieapp.base.BaseListFragment
-import com.abrahamlay.newmovieapp.base.BaseViewModel
 import com.abrahamlay.newmovieapp.databinding.MovieFragmentBinding
 
 /**

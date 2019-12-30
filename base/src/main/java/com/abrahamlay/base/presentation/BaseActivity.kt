@@ -1,4 +1,4 @@
-package com.abrahamlay.newmovieapp.base
+package com.abrahamlay.base.presentation
 
 import android.annotation.SuppressLint
 import android.os.Bundle

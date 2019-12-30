@@ -1,4 +1,4 @@
-package com.abrahamlay.newmovieapp.constants
+package com.abrahamlay.base.constants
 
 /**
  * Created by Abraham Lay on 2019-10-13.
