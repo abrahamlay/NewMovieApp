@@ -7,5 +7,21 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.abrahamlay.newmovieapp.feature.MainFragment"
-        android:label="MainFragment" />
+        android:label="MainFragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.abrahamlay.newmovieapp.feature.detail.DetailFragment"
+        android:label="DetailFragment">
+        <argument
+            android:name="movieModel"
+            app:argType="com.abrahamlay.domain.entities.MovieModel" />
+        <action
+            android:id="@+id/action_detailFragment_pop"
+            app:popUpTo="@id/detailFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

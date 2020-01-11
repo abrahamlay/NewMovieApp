@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
-import com.abrahamlay.newmovieapp.R
 import com.abrahamlay.base.presentation.BaseFragment
 import com.abrahamlay.base.subscriber.BaseViewModel
+import com.abrahamlay.newmovieapp.R
 import com.google.android.material.tabs.TabLayout
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -21,8 +21,8 @@ abstract class TabFragment : BaseFragment<BaseViewModel>() {
     private var pager: ViewPager? = null
 
     private var adapter: TabAdapter? = null
-    protected var fragments: MutableList<Fragment> = mutableListOf()
-    protected var titles: MutableList<String> = mutableListOf()
+    protected lateinit var fragments: MutableList<Fragment>
+    protected lateinit var titles: MutableList<String>
 
     protected abstract fun initFragmentAndTitle()
 
@@ -39,9 +39,10 @@ abstract class TabFragment : BaseFragment<BaseViewModel>() {
         return view
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
+    override fun onInitViews() {
+        super.onInitViews()
+        fragments = mutableListOf()
+        titles = mutableListOf()
         initFragmentAndTitle()
         initTabAndPager()
     }

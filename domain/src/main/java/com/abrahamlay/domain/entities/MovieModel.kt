@@ -1,10 +1,12 @@
 package com.abrahamlay.domain.entities
 
-import java.io.Serializable
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
 /**
  * Created by Abraham Lay on 2019-09-29.
  */
+@Parcelize
 data class MovieModel(
     var voteCount: Int,
     var id: Int,
@@ -20,4 +22,4 @@ data class MovieModel(
     var adult: Boolean,
     var overview: String?,
     var releaseDate: String?
-) : Serializable
+) : Parcelable
