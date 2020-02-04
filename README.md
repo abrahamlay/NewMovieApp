@@ -1,6 +1,6 @@
 # NewMovieApp
 
-<b>MVVM</b> 
-<b> Data Binding </b>
-<b> Android Navigation </b>
-<b> Clean Architecture </b>
+<b>MVVM</b> <br>
+<b> Data Binding </b> <br>
+<b> Android Navigation </b> <br>
+<b> Clean Architecture </b> <br>
