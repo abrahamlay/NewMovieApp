@@ -1,6 +1,6 @@
 package com.abrahamlay.newmovieapp.module
 
-import com.abrahamlay.data.WebApiProvider
+import com.abrahamlay.newmovieapp.WebApiProvider
 import com.abrahamlay.data.apis.MovieAPI
 import org.koin.dsl.module
 

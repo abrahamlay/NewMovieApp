@@ -1,6 +1,10 @@
 apply plugin: 'com.android.library'
+
 apply plugin: 'kotlin-android'
+
 apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion androidCompileSdkVersion
@@ -13,26 +17,39 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    dataBinding {
+        enabled = true
+    }
+
 }
+
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation kotlinStdLib
 
     implementation project(':domain')
+    implementation project(':data')
+    implementation project(':base')
 
-    //appcompat
+    //androidx
     implementation support.appcompat
+    implementation support.constraint
+    implementation support.recyclerview
+    implementation support.core
+    implementation support.design
+
+    //navigation
+    implementation support.navigationUi
+    implementation support.navigationFragment
+
+    //dependency injection
+    implementation support.koin
+    implementation support.koinScope
+    implementation support.koinViewmodel
 
     //network
     implementation libs.retrofit
-    implementation libs.okhttp
-    implementation libs.gson
-
-    //rxjava
-    implementation libs.rxjava
-
-
 
     testImplementation test.jUnit
     androidTestImplementation test.testRunner

@@ -1,7 +1,7 @@
 package com.abrahamlay.newmovieapp.module
 
-import com.abrahamlay.newmovieapp.feature.popular.PopularMovieViewModel
-import com.abrahamlay.newmovieapp.feature.toprated.TopRatedMovieViewModel
+import com.abrahamlay.home.popular.PopularMovieViewModel
+import com.abrahamlay.home.toprated.TopRatedMovieViewModel
 import org.koin.androidx.experimental.dsl.viewModel
 import org.koin.dsl.module
 
